@@ -1,3 +1,8 @@
-<h1><%= @post.content %></h1>
+<h1><%= @post.user.user_name %></h1>
+
+<h3><%= @post.content %></h3>
 
 <p>&#x021D1; <%= @post.post_likes.size %> | comments <%= @post.comments.size %></p>
+
+<h4><%= @post.comments.first.user.user_name %></h4>
+<p><%= @post.comments.first.content %></p>
