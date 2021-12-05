@@ -1,7 +1,5 @@
 <% @users.each do |user| %>
   <div class='user_index'>
-    <h1><%= user.user_name %>'s Profile</h1>
-    <h3>First name: <%= user.first_name %>, last name: <%= user.last_name %></h3>
-    <h3>Number of Posts: <%= user.posts.size %></h3>
+    <%= link_to "#{user.user_name}'s ProfileNumber of Posts: #{user.posts.size}", user_path(user) %>
   </div>
 <% end %>

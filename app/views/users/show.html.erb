@@ -1,0 +1,16 @@
+<%= link_to "back to all users", users_path %>
+
+<h1><%= @user.user_name %>'s Profile</h1>
+
+<h3>First name: <%= @user.first_name %>, last name: <%= @user.last_name %></h3>
+<h3>Posts:</h3>
+
+<% @user.posts.each do |post| %>
+  <div class='posts'>
+    <h3><%= link_to post.content, user_post_path(@user, post) %></h3>
+    <%# <% form_tag {controller: 'post_likes', action: 'new', method: 'post'} %> %>
+      <%# <input type='submit' text='&#x021D1;' /> %>
+    <%# <% end %> %>
+    <p>&#x021D1; <%= post.post_likes.size %></p>
+  </div>
+<% end %>
