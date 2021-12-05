@@ -32,3 +32,9 @@ comment7 = Comment.create(user: user3, post: post4, content: 'this is a comment 
 comment8 = Comment.create(user: user1, post: post4, content: 'this is a comment of user1 for post4')
 comment9 = Comment.create(user: user3, post: post7, content: 'this is a comment of user3 for post7')
 
+reply1 = CommentReply.create(user: user1, comment: comment1, content: 'this is reply1 of user1 in comment1')
+reply2 = CommentReply.create(user: user2, comment: comment1, content: 'this is reply2 of user2 in comment1')
+reply3 = CommentReply.create(user: user3, comment: comment3, content: 'this is reply3 of user3 in comment3')
+reply4 = CommentReply.create(user: user2, comment: comment3, content: 'this is reply4 of user2 in comment3')
+reply5 = CommentReply.create(user: user3, comment: comment4, content: 'this is reply5 of user3 in comment4')
+

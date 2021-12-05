@@ -6,3 +6,6 @@
 
 <h4><%= @post.comments.first.user.user_name %></h4>
 <p><%= @post.comments.first.content %></p>
+<p>&#x021D1; <%= @post.comments.first.comment_likes.size %> | replies <%= @post.comments.first.comment_replies.size %></p>
+
+<%= link_to 'show all comments', post_comments_path(@post) %>

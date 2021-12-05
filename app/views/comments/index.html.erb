@@ -1,0 +1,7 @@
+
+<% @comments.each do |comment| %>
+  <div>
+    <h3><%= comment.content %></h3>
+    <h5>&#x021D1; <%= comment.comment_likes.size %> <%= link_to "replies #{comment.comment_replies.size}", comment_comments_reply_path(comment) %></h5>
+  </div>
+<% end %>

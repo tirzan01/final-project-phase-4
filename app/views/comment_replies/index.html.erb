@@ -1,0 +1,4 @@
+<% @replies.each do |reply| %>
+  <h4><%= reply.user.user_name %></h4>
+  <%= reply.content %>
+<% end %>

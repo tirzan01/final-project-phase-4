@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :comments do
-    resources :comments_reply
+    resources :comment_replies
   end
 end

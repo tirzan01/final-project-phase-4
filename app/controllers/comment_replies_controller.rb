@@ -1,4 +1,8 @@
 class CommentRepliesController < ApplicationController
+  def index
+    @replies = CommentReply.where('comment_id = ?', params[:comment_id])
+  end
+
   def new
     
   end
