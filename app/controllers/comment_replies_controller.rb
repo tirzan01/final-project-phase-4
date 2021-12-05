@@ -27,6 +27,6 @@ class CommentRepliesController < ApplicationController
   private
 
   def post_params
-    params.require(:comment_replies).permit(:user, :comment, :content)
+    params.require(:comment_reply).permit(:user, :comment, :content)
   end
 end

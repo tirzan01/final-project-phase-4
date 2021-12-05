@@ -8,11 +8,16 @@ class UsersController < ApplicationController
   end
 
   def new
-    
+    @user = User.new
   end
 
   def create
-    
+    @user = User.new(user_params)
+
+    return render :new unless @user.valid?
+
+    @user.save
+    redirect_to(@user)
   end
 
   def edit
@@ -30,6 +35,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:posts).permit(:user_name, :first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:user_name, :first_name, :last_name, :email, :password, :password_confirmation)
   end
 end
