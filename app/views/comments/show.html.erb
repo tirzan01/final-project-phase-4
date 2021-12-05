@@ -1,0 +1,10 @@
+<h2><%= @comment.user.user_name %></h2>
+
+<h3><%= @comment.content %></h3>
+
+<h5>&#x021D1; <%= @comment.comment_likes.size %></h5>
+
+<% @comment.comment_replies.each do |reply| %>
+  <h4><%= reply.user.user_name %></h4>
+  <%= reply.content %>
+<% end %>

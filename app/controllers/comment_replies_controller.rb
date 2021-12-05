@@ -1,6 +1,7 @@
 class CommentRepliesController < ApplicationController
   def index
-    @replies = CommentReply.where('comment_id = ?', params[:comment_id])
+    @comment = Comment.find(params[:comment_id])
+    @replies = CommentReply.where('comment_id = ?', @comment.id)
   end
 
   def new
