@@ -9,7 +9,10 @@ class CommentRepliesController < ApplicationController
   end
 
   def create
-    
+    comment = Comment.new(post_params)
+    return redirect_to new_post_comment_path(comment.post) unless comment.valid?
+    comment.save
+    redirect_to post_path(comment.post)
   end
 
   def edit

@@ -1,9 +1,21 @@
 class PostLikesController < ApplicationController
-  def new
-    
+  before_action :require_login
+
+  def create
+    p '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'
+    p params
+    p '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'
+    like = PostLike.create(User.find(session[:user_id], post))
+    redirect_to(post_path(post))
   end
 
   def destroy
     
+  end
+
+  private
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 end

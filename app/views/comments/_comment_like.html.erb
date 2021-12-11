@@ -1,0 +1,5 @@
+<% if comment.liked?(session[:user_id]) %>
+  <%= button_to "&#x021D1; #{comment.comment_likes.size}".html_safe, downvote_path(comment), method: 'put' %>
+<% else %>
+  <%= button_to "&#x021D1; #{comment.comment_likes.size}".html_safe, upvote_path(comment), method: 'put' %>
+<% end %>

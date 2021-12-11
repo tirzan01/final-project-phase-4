@@ -1,0 +1,12 @@
+<h1><%= @post.user.user_name %></h1>
+
+<%= form_for(@post) do |f| %>
+
+  <%= f.hidden_field :user_id %>
+
+  <%= f.label "Ask a question" %><br>
+  <%= f.text_area :content %><br>
+
+  <%= f.submit 'Create new post' %>
+
+<% end %>

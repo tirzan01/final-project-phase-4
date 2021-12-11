@@ -2,9 +2,17 @@
 
 <h3><%= @comment.content %></h3>
 
-<h5>&#x021D1; <%= @comment.comment_likes.size %></h5>
+<%= render partial: 'comment_like', locals: { comment: @comment } %>
 
-<% @comment.comment_replies.each do |reply| %>
+<%= form_tag({ controller: 'comment_replies', action: 'create', method: 'post' }) do |f| %>
+  <%= hidden_field :comment, :user_id, value: session[:user_id] %>
+  <%= hidden_field :comment, :comment_id, value: params[:id] %>
+  <label>write your response</label><br>
+  <%= text_area_tag 'comment[content]' %><br>
+  <%= submit_tag "post response" %>
+<% end %>
+
+<% @comment.comment_replies.reverse.each do |reply| %>
   <h4><%= reply.user.user_name %></h4>
   <%= reply.content %>
 <% end %>

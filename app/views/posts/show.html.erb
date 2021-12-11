@@ -2,10 +2,24 @@
 
 <h3><%= @post.content %></h3>
 
-<p>&#x021D1; <%= @post.post_likes.size %> | comments <%= @post.comments.size %></p>
+<% if @post.liked?(session[:user_id]) %>
+  <%= button_to "&#x021D1;#{@post.post_likes.size}".html_safe, dislike_path(@post), method: 'put' %>
+<% else %>
+  <%= button_to "&#x021D1;#{@post.post_likes.size}".html_safe, like_path(@post), method: 'put' %>
+<% end %>
 
-<h4><%= @post.comments.first.user.user_name %></h4>
-<p><%= @post.comments.first.content %></p>
-<p>&#x021D1; <%= @post.comments.first.comment_likes.size %> | replies <%= @post.comments.first.comment_replies.size %></p>
+<p>comments <%= @post.comments.size %></p>
 
-<%= link_to 'show all comments', post_comments_path(@post) %>
+<%= form_tag({ controller: 'comments', action: 'create', method: 'post' }) do |f| %>
+  <%= hidden_field :comment, :user_id, value: session[:user_id] %>
+  <%= hidden_field :comment, :post_id, value: params[:id] %>
+  <label>write your response</label><br>
+  <%= text_area_tag 'comment[content]' %><br>
+  <%= submit_tag "post response" %>
+<% end %>
+
+<% @post.comments.reverse.each do |comment| %>
+    <h3><%= comment.content %></h3>
+    <h5><%= render partial: 'comments/comment_like', locals: { comment: comment } %></h5>
+    <h5><%= render partial: 'comments/comment_replies', locals: { comment: comment } %></h5>
+<% end %>

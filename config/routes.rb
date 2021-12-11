@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  post '/post_like' => 'post_likes#new'
-  post '/post_like' => 'post_likes#destroy'
+  put '/posts/:id/post_like', to: 'posts#post_like', as: 'like'
+  put '/posts/:id/remove_post_like', to: 'posts#remove_post_like', as: 'dislike'
 
-  post '/comment_like' => 'comment_likes#new'
-  post '/comment_like' => 'comment_likes#destroy'
+  put 'posts/:id/comments/:id/comment_like', to: 'comments#upvote', as: 'upvote'
+  put 'posts/:id/comments/:id/remove_comment_like', to: 'comments#downvote', as: 'downvote'
 
   resources :users do
     resources :posts
