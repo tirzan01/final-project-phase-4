@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comment_replies
   end
+
+  resources :comment_replies
 end

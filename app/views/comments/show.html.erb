@@ -4,12 +4,12 @@
 
 <%= render partial: 'comment_like', locals: { comment: @comment } %>
 
-<%= form_tag({ controller: 'comment_replies', action: 'create', method: 'post' }) do |f| %>
-  <%= hidden_field :comment, :user_id, value: session[:user_id] %>
-  <%= hidden_field :comment, :comment_id, value: params[:id] %>
+<%= form_tag({ controller: 'comment_replies', action: 'create', method: 'post' }) do %>
+  <%= hidden_field :comment_reply, :user_id, value: session[:user_id] %>
+  <%= hidden_field :comment_reply, :comment_id, value: params[:id] %>
   <label>write your response</label><br>
-  <%= text_area_tag 'comment[content]' %><br>
-  <%= submit_tag "post response" %>
+  <%= text_area_tag 'comment_reply[content]' %><br>
+  <%= submit_tag "post reply" %>
 <% end %>
 
 <% @comment.comment_replies.reverse.each do |reply| %>

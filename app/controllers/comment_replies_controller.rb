@@ -5,14 +5,14 @@ class CommentRepliesController < ApplicationController
   end
 
   def new
-    
+    @reply = CommentReply.new
   end
 
   def create
-    comment = Comment.new(post_params)
-    return redirect_to new_post_comment_path(comment.post) unless comment.valid?
-    comment.save
-    redirect_to post_path(comment.post)
+    reply = CommentReply.new(reply_params)
+    return redirect_to comment_path(reply.comment) unless reply.valid?
+    reply.save
+    redirect_to comment_path(reply.comment)
   end
 
   def edit
@@ -29,7 +29,7 @@ class CommentRepliesController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:comment_reply).permit(:user, :comment, :content)
+  def reply_params
+    params.require(:comment_reply).permit(:user_id, :comment_id, :content)
   end
 end

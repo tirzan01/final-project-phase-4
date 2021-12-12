@@ -10,7 +10,7 @@
 
 <p>comments <%= @post.comments.size %></p>
 
-<%= form_tag({ controller: 'comments', action: 'create', method: 'post' }) do |f| %>
+<%= form_tag({ controller: 'comments', action: 'create', method: 'post' }) do %>
   <%= hidden_field :comment, :user_id, value: session[:user_id] %>
   <%= hidden_field :comment, :post_id, value: params[:id] %>
   <label>write your response</label><br>
